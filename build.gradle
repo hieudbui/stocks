@@ -11,28 +11,30 @@ targetCompatibility = 1.8
 
 def jvmEncoding = java.nio.charset.Charset.defaultCharset().name()
 if (jvmEncoding != "UTF-8") {
-    throw new IllegalStateException("Build environment must be UTF-8 (it is: $jvmEncoding) - add '-Dfile.encoding=UTF-8' to the GRADLE_OPTS environment variable ")
+	throw new IllegalStateException("Build environment must be UTF-8 (it is: $jvmEncoding) - add '-Dfile.encoding=UTF-8' to the GRADLE_OPTS environment variable ")
 }
 
 if (!JavaVersion.current().java8Compatible) {
-    throw new IllegalStateException("Must be built with Java 8 or higher")
+	throw new IllegalStateException("Must be built with Java 8 or higher")
 }
 
 buildscript {
-    repositories {
-        mavenCentral()
-    }
+	repositories {
+		mavenCentral()
+	}
 }
 
 dependencies {
-    testCompile "junit:junit:4.11"
+	testCompile "junit:junit:4.11"
+	compile 'com.google.guava:guava:11.0.2'
+	compile 'org.apache.commons:commons-lang3:3.1'
 }
 
 repositories {
-    mavenCentral()
-    mavenLocal()
+	mavenCentral()
+	mavenLocal()
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.12'
+	gradleVersion = '2.12'
 }

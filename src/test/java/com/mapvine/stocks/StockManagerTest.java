@@ -1,6 +1,6 @@
-package com.layered.stocks;
+package com.mapvine.stocks;
 
-import com.layered.stocks.model.Stock;
+import com.mapvine.stocks.model.Stock;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -82,5 +82,4 @@ public class StockManagerTest {
         expected.expect(IllegalArgumentException.class);
         unit.sellStock("AMZN", -1, new BigDecimal("100.00"));
     }
-
 }

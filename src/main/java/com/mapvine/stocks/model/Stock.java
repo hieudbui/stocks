@@ -1,4 +1,7 @@
-package com.layered.stocks.model;
+package com.mapvine.stocks.model;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.math.BigDecimal;
 
@@ -52,5 +55,29 @@ public class Stock {
      */
     public BigDecimal getPrice() {
         return price;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        final Stock stock = (Stock) o;
+
+        return new EqualsBuilder()
+                .append(ticker, stock.ticker)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(ticker)
+                .toHashCode();
     }
 }
