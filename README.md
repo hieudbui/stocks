@@ -2,6 +2,7 @@ Things to improve
 =================
 
 Definitely could be more functional in some of the implementation
+Need to look at the usage of ConcurrentLinkedDeque
 
 
 
