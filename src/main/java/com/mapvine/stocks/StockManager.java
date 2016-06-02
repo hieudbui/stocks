@@ -75,7 +75,7 @@ public class StockManager {
         stockSales.add(new StockTransaction(new Stock(ticker, "", sharePrice), numberOfShares));
         final List<BigDecimal> salePrices = stockSales.stream().map(st -> st.getValue()).collect(Collectors.toList());
         salePrices.sort((a, b) -> a.compareTo(b));
-        return Optional.ofNullable(new TreeSet(salePrices));
+        return Optional.of(new TreeSet(salePrices));
     }
 
     /**
@@ -87,7 +87,7 @@ public class StockManager {
         if (findNumberOfSharesPurchased(ticker) <= 0) {
             return Optional.empty();
         }
-        return Optional.ofNullable(getAverageStockSoldPrice(ticker).subtract(getAverageStockPurchasedPrice(ticker)));
+        return Optional.of(getAverageStockSoldPrice(ticker).subtract(getAverageStockPurchasedPrice(ticker)));
     }
 
     /**
