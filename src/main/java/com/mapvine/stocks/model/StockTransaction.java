@@ -1,5 +1,7 @@
 package com.mapvine.stocks.model;
 
+import com.google.common.base.Preconditions;
+
 import java.math.BigDecimal;
 
 public class StockTransaction {
@@ -7,11 +9,8 @@ public class StockTransaction {
     private int numberOfShares;
 
     public StockTransaction(Stock stock, int numberOfShares) {
-        if (stock == null) {
-            throw new IllegalArgumentException("stock is required!");
-        } else if (numberOfShares < 0) {
-            throw new IllegalArgumentException("numberOfShares must be greater than or equals to zero!");
-        }
+        Preconditions.checkArgument(stock != null, "stock is required!");
+        Preconditions.checkArgument(numberOfShares >= 0, "numberOfShares must be greater than or equals to zero!");
         this.stock = stock;
         this.numberOfShares = numberOfShares;
     }
