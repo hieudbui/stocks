@@ -73,8 +73,8 @@ public class StockManager {
             return Optional.empty();
         }
         stockSales.add(new StockTransaction(new Stock(ticker, "", sharePrice), numberOfShares));
-        final List<BigDecimal> salePrices = stockSales.stream().map(st -> st.getValue()).collect(Collectors.toList());
-        salePrices.sort((a, b) -> a.compareTo(b));
+        final List<BigDecimal> salePrices = stockSales.stream().map(st -> st.getStock().getPrice()).collect(Collectors.toList());
+        salePrices.sort((a, b) -> b.compareTo(a));
         return Optional.of(new TreeSet(salePrices));
     }
 
