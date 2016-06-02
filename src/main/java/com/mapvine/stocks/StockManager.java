@@ -34,7 +34,7 @@ public class StockManager {
      */
     public BigDecimal getValueUnderManagerByTicker(final String ticker) {
         final BigDecimal value = sumValue(findStockUnderManagement(ticker));
-        return value.equals(BigDecimal.ZERO) ? BigDecimal.ZERO : value.setScale(4, BigDecimal.ROUND_HALF_UP);
+        return value.equals(BigDecimal.ZERO) ? BigDecimal.ZERO : value;
     }
 
     /**
